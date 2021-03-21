@@ -1,2 +1,14 @@
-package com.springprojects.springdi.services;public class I18nSpanishGreetingService {
+package com.springprojects.springdi.services;
+
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
+
+@Service("i18nGreetingService")
+@Profile("ES")
+public class I18nSpanishGreetingService implements GreetingService{
+
+    @Override
+    public String sayGreeting() {
+        return "BONJUNO DE SPANISH";
+    }
 }

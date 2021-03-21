@@ -1,9 +1,6 @@
 package com.springprojects.springdi;
 
-import com.springprojects.springdi.controllers.ConstructorInjectedController;
-import com.springprojects.springdi.controllers.MyController;
-import com.springprojects.springdi.controllers.PropertyInjectedController;
-import com.springprojects.springdi.controllers.SetterInjectedController;
+import com.springprojects.springdi.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -16,10 +13,13 @@ public class SpringDiApplication {
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SpringDiApplication.class, args);
 
-		//Context adds Spring annotated classes as Beans (dependency injection). Standard bean name is the class name starting with lower case.
+		//Context ad
+		// ds Spring annotated classes as Beans (dependency injection). Standard bean name is the class name starting with lower case.
 		MyController myController = (MyController) ctx.getBean("myController");
 
-		String greeting = myController.sayHello();
+		System.out.println("Primary Greeting---");
+
+		String greeting = myController.getGreeting();
 
 		System.out.println(greeting);
 
@@ -42,6 +42,13 @@ public class SpringDiApplication {
 		SetterInjectedController setterInjectedController = (SetterInjectedController) ctx.getBean("setterInjectedController");
 
 		System.out.println(setterInjectedController.getGreeting());
+
+
+		System.out.println("International Greeting---");
+
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+
+		System.out.println(i18nController.sayHello());
 	}
 
 }
